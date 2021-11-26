@@ -1,0 +1,154 @@
+/*------------base*/
+*{
+    margin: 0 0;
+    padding: 0 0;
+    box-sizing: border-box;
+    font-family: century-old-style-std,serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.8rem;
+    transition: 1s;
+}
+footer{
+    pointer-events: none;
+    position: absolute;
+    width: 100vw;
+    left: 0;
+    bottom: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    mix-blend-mode: overlay;
+}
+main{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.hidden{
+    display: none;
+}
+
+/*------------regler und shuffle*/
+div#regler{
+    position: absolute;
+    top: 42px;
+    right: 0;
+    z-index: 2;
+    background: #ffffff80;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    mix-blend-mode: overlay;
+}
+div#regler>button,
+div#shuffle>button{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+div#regler>button#close{
+    margin-top: 20px;
+}
+div#regler div#regler_content{
+    width: 250px;
+}
+div#regler div#regler_content label{
+    display: block;
+    margin-bottom: 1px;
+}
+div#regler div#regler_content>div:not(:first-of-type) label{
+    margin-top: 20px;
+}
+div#regler div#regler_content input{
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    background: black;
+    outline: none;
+    opacity: 1;
+    border-radius: 10px;
+}
+div#regler div#regler_content input::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: black;
+    border: 1px solid white;
+    cursor: pointer;
+    border-radius: 50%;
+}
+div#shuffle{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    background: #ffffff80;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    mix-blend-mode: overlay;
+}
+
+/*------------background*/
+main{
+    background: radial-gradient(circle, var(--color_1_bg) 0%, var(--color_2_bg) 100%);
+}
+
+/*------------blob*/
+div#blob{
+    width: var(--blobsize);
+    height: var(--blobsize);
+    background: radial-gradient(circle, var(--color_1_blob) 0%, var(--color_2_blob) 100%);
+    animation: blubber var(--as-size-blob) linear infinite alternate,
+    colorswitch var(--as-color-blob) ease infinite alternate;
+    mix-blend-mode: var(--mixblendmode);
+}
+@keyframes blubber {
+    0%{
+        border-radius: 56% 44% 70% 30% / 49% 54% 46% 51%;
+        transform: scale(1) rotate(0deg) translateY(0px) translateX(0px);
+    }
+    20%{
+        border-radius: 68% 32% 55% 45% / 60% 48% 52% 40%;
+        transform: scale(1.2) rotate(100deg) translateY(17px) translateX(-19px);
+    }
+    40%{
+        border-radius: 41% 69% 60% 40% / 62% 38% 67% 38%;
+        transform: scale(1.4) rotate(-10deg) translateY(51px) translateX(-35px);
+    }
+    60%{
+        border-radius: 34% 66% 41% 61% / 60% 48% 52% 40%;
+        transform: scale(1.3) rotate(38deg) translateY(55px) translateX(-47px);
+    }
+    80%{
+        border-radius: 47% 53% 65% 35% / 48% 34% 66% 52%;
+        transform: scale(1.5) rotate(20deg) translateY(39px) translateX(-33px);
+    }
+    100%{
+        border-radius: 33% 67% 55% 45% / 62% 48% 52% 38%;
+        transform: scale(1.6) rotate(98deg) translateY(21px) translateX(-1px);
+    }
+}
+@keyframes colorswitch {
+    from{
+        filter: blur(var(--blursize)) contrast(80%) hue-rotate(-30deg);
+        /*filter: blur(var(--blursize)) contrast(120%) hue-rotate(30deg);*/
+    }
+    to{
+        filter: blur(var(--blursize)) contrast(130%) hue-rotate(30deg);
+        /*filter: blur(var(--blursize)) contrast(200%) hue-rotate(320deg);*/
+    }
+}
