@@ -7,6 +7,8 @@
     font-weight: 400;
     font-style: normal;
     font-size: 0.8rem;
+}
+*:not( main,footer ){
     transition: 1s;
 }
 footer{
