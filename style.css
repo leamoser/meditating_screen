@@ -147,10 +147,21 @@ div#blob{
 @keyframes colorswitch {
     from{
         filter: blur(var(--blursize)) contrast(80%) hue-rotate(-30deg);
-        /*filter: blur(var(--blursize)) contrast(120%) hue-rotate(30deg);*/
     }
     to{
         filter: blur(var(--blursize)) contrast(130%) hue-rotate(30deg);
-        /*filter: blur(var(--blursize)) contrast(200%) hue-rotate(320deg);*/
+    }
+}
+
+/*------------mobile*/
+@media only screen and (max-width: 414px) {
+    div#regler div#regler_content{
+        width: calc( 100vw - calc( 2 * 20px ) );
+        height: 70vh;
+        overflow: scroll;
+    }
+    footer a{
+        text-decoration: none;
+        color: inherit;
     }
 }
