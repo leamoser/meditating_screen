@@ -55,7 +55,8 @@ div#regler{
     mix-blend-mode: overlay;
 }
 div#regler>button,
-div#shuffle>button{
+div#shuffle>button,
+div#screenshot>button{
     background: transparent;
     border: none;
     cursor: pointer;
@@ -95,6 +96,17 @@ div#regler div#regler_content input::-webkit-slider-thumb{
 div#shuffle{
     position: absolute;
     top: 0;
+    right: 0;
+    z-index: 2;
+    background: #ffffff80;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    mix-blend-mode: overlay;
+}
+div#screenshot{
+    position: absolute;
+    bottom: 0;
     right: 0;
     z-index: 2;
     background: #ffffff80;

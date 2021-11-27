@@ -3,6 +3,7 @@ const REGLER = document.querySelector('div#regler_content')
 const TOGGLE_OPEN = document.querySelector('button#open')
 const TOGGLE_CLOSE = document.querySelector('button#close')
 const TOGGLE_SHUFFLE = document.querySelector('div#shuffle>button')
+const TOGGLE_SCREENSHOT = document.querySelector('div#screenshot>button')
 const MIX_BLEND_MODES = [
     'normal',
     'multiply',
@@ -173,7 +174,7 @@ TOGGLE_CLOSE.addEventListener('click', function () {
     hide_element(REGLER)
     show_element(TOGGLE_OPEN)
 })
-TOGGLE_SHUFFLE.addEventListener('click', function (){
+TOGGLE_SHUFFLE.addEventListener('click', function () {
     hide_element(REGLER)
     hide_element(TOGGLE_CLOSE)
     show_element(TOGGLE_OPEN)
@@ -181,15 +182,18 @@ TOGGLE_SHUFFLE.addEventListener('click', function (){
         shuffleAllParams(param)
     })
 })
+TOGGLE_SCREENSHOT.addEventListener('click', function () {
+    console.log('do screenshot')
+})
 
 /*Funktionen*/
 let hide_element = (element) => {
-    if(!element.classList.contains('hidden')){
+    if (!element.classList.contains('hidden')) {
         element.classList.add('hidden')
     }
 }
 let show_element = (element) => {
-    if(element.classList.contains('hidden')){
+    if (element.classList.contains('hidden')) {
         element.classList.remove('hidden')
     }
 }
@@ -212,10 +216,10 @@ let createParamSlider = (param) => {
     regler.setAttribute('min', param.val_min)
     regler.setAttribute('max', param.val_max)
     regler.setAttribute('value', param.val_init)
-    if(param.steps){
+    if (param.steps) {
         regler.setAttribute('step', 1)
     }
-    regler.addEventListener('input', function (e){
+    regler.addEventListener('input', function (e) {
         updateBlob(param, e)
     })
     container.appendChild(label)
@@ -225,10 +229,10 @@ let createParamSlider = (param) => {
 let setParamVariable = (param, val_updated = null) => {
     let val
     val_updated ? val = val_updated : val = param.val_init
-    if(!param.steps){
-        document.documentElement.style.setProperty(`--${param.variable_name}`,val + param.unit);
-    }else{
-        document.documentElement.style.setProperty(`--${param.variable_name}`,param.step_values[val]);
+    if (!param.steps) {
+        document.documentElement.style.setProperty(`--${param.variable_name}`, val + param.unit);
+    } else {
+        document.documentElement.style.setProperty(`--${param.variable_name}`, param.step_values[val]);
     }
 }
 let updateBlob = (param, event) => {
@@ -239,7 +243,7 @@ let setUpParam = (param) => {
     setParamVariable(param)
 }
 let shuffleAllParams = (param) => {
-    if(param.id !== 4){
+    if (param.id !== 4) {
         let random_val = getRadomNumber(param.val_min, param.val_max)
         setParamVariable(param, random_val)
         let found = params.find(el => {
