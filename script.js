@@ -182,9 +182,9 @@ TOGGLE_SHUFFLE.addEventListener('click', function () {
         shuffleAllParams(param)
     })
 })
-TOGGLE_SCREENSHOT.addEventListener('click', function () {
+/*TOGGLE_SCREENSHOT.addEventListener('click', function () {
     console.log('do screenshot')
-})
+})*/
 
 /*Funktionen*/
 let hide_element = (element) => {
